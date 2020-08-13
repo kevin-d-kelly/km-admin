@@ -1,0 +1,53 @@
+<div data-ng-class="controls.currentLocale">
+	<ul class="item-list province" data-ng-show="controls.display == 'province'">
+		<h4 data-translate="ui.cambodia"></h4>
+		<h2 data-translate="ui.province"></h2>
+		<li data-ng-repeat="province in controls.provinces" data-ng-click="controls.changeFocus(province, 'province', true)">
+			<h3 data-translate="provinces.{{province.identifier}}"></h3>
+		</li>
+	</ul>
+	<ul class="item-list district" data-ng-show="controls.display == 'district'">
+		<div class="back">
+			<button class="back" data-ng-click="controls.goBack('province')">
+				<i class="icon-undo2"></i>
+				<span data-translate="ui.back"></span>
+			</button>
+		</div>
+		<h4 data-translate="provinces.{{controls.selectedProvince.identifier}}"></h4>
+		<h2 data-translate="ui.district"></h2>
+		<li data-ng-repeat="district in controls.districts" data-ng-click="controls.changeFocus(district, 'district', true)">
+			<h3 data-translate="districts.{{district.identifier}}"></h3>
+		</li>
+	</ul>
+	<ul class="item-list commune" data-ng-show="controls.display == 'commune'">
+		<div class="back">
+			<button class="back" data-ng-click="controls.goBack('district')" >
+				<i class="icon-undo2"></i>
+				<span data-translate="ui.back"></span>
+			</button>
+		</div>
+		<h4 data-translate="provinces.{{controls.selectedProvince.identifier}}"></h4>
+		<h5 data-translate="districts.{{controls.selectedDistrict.identifier}}"></h5>
+		<h2 data-translate="ui.commune"></h2>
+		<li data-ng-repeat="commune in controls.communes" data-ng-click="controls.changeFocus(commune, 'commune', false)">
+			<h3 data-translate="communes.{{commune.identifier}}"></h3>
+		</li>
+	</ul>
+</div>
+
+        <footer data-ng-class="controls.currentLocale">
+            <nav>
+            	<div data-ng-if="controls.selectedProvince">
+            		<span data-translate="provinces.{{controls.selectedProvince.identifier}}"> > </span>
+            	</div>
+                <div data-ng-if="controls.selectedDistrict" >	
+					<i class="icon-arrow-right"></i>
+                	<span data-translate="districts.{{controls.selectedDistrict.identifier}}"> > </span>
+                </div>
+                <div data-ng-if="controls.selectedCommune" >
+					<i class="icon-arrow-right"></i>
+                	<span data-translate="communes.{{controls.selectedCommune.identifier}}"></span>
+                </div>
+                <div class="copy">&copy; Nagnata Design</div>
+            </nav>
+        </footer>

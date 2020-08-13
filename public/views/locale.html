@@ -1,0 +1,9 @@
+		
+        <header data-ng-class="locale.currentLocale">
+            <h1 data-translate="ui.title"></h1>   
+			<div data-ng-repeat="language in locale.locales" data-ng-if="language !== locale.currentLocale" class="language">
+	          <button data-ng-click="locale.changeLanguage(language)">
+	          	<img src="img\i18n\{{language}}.png" alt="{{language}}'">
+	          </button>
+	        </div>
+        </header>
